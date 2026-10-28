@@ -1,0 +1,52 @@
+{
+  "name": "@mambalabsdev/mcp-recent-funding-rounds-feed",
+  "version": "1.0.0",
+  "description": "MCP server for Recent Funding Rounds Feed. Find US companies that just raised private funding, from SEC Form D filings: company, domain, amount raised and offered, securities, investors count, executives and directors, address, and phone, filtered by date, state, industry, and size. Runs on Apify. Clay-ready output.",
+  "type": "module",
+  "bin": {
+    "mcp-recent-funding-rounds-feed": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "test": "npm run build && node --test test/*.test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "funding-rounds",
+    "recently-funded",
+    "form-d",
+    "sec-edgar",
+    "startups",
+    "venture-capital",
+    "lead-generation",
+    "apify",
+    "clay"
+  ],
+  "author": "Mamba Labs <labs@mambamindsetgrowth.com>",
+  "license": "MIT",
+  "homepage": "https://apify.com/mambalabs/recent-funding-rounds-feed",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mambalabsdev/mcp-recent-funding-rounds-feed"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "5.9.3"
+  },
+  "mcpName": "com.mambabuilt/mcp-recent-funding-rounds-feed",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "zod": "^4.4.3"
+  }
+}

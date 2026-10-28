@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mamba-recent-funding-rounds-feed": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mambalabsdev/mcp-recent-funding-rounds-feed"
+      ],
+      "env": {
+        "APIFY_TOKEN": "your-apify-token"
+      }
+    }
+  }
+}

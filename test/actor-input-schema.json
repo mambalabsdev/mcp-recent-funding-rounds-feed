@@ -1,0 +1,181 @@
+{
+  "source": "GET /v2/actor-builds/IQAyHq3oK0yestCRt (build 0.1.7, latest) inputSchema, read 2026-10-28",
+  "schema": {
+    "title": "Recent Funding Rounds Feed",
+    "description": "New private funding rounds from SEC Form D filings. Pick a filing window and filters; each round row is one filing with company, amounts, people, and the company domain when proved.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "filed_within_days": {
+        "title": "Filed within the last days",
+        "type": "string",
+        "description": "Filing window ending today, 1 to 90 days, today included. Ignored when date_from is set.",
+        "default": "7",
+        "prefill": "7",
+        "editor": "textfield"
+      },
+      "date_from": {
+        "title": "Filed from (YYYY-MM-DD)",
+        "type": "string",
+        "description": "Start of a custom filing window. The window is at most 92 days.",
+        "editor": "textfield"
+      },
+      "date_to": {
+        "title": "Filed to (YYYY-MM-DD)",
+        "type": "string",
+        "description": "End of a custom filing window. Default today.",
+        "editor": "textfield"
+      },
+      "states": {
+        "title": "States",
+        "type": "array",
+        "description": "Two character state codes of the company's principal place of business, such as CA, NY, or TX. Empty means every state.",
+        "editor": "stringList",
+        "prefill": []
+      },
+      "industry_groups": {
+        "title": "Industry groups",
+        "type": "array",
+        "description": "Keep only these Form D industry groups. Empty means all. One of: Agriculture, Airlines and Airports, Lodging and Conventions, Tourism and Travel Services, Other Travel, Biotechnology, Health Insurance, Hospitals and Physicians, Pharmaceuticals, Other Health Care, Business Services, Coal Mining, Electric Utilities, Energy Conservation, Environmental Services, Oil and Gas, Other Energy, Commercial Banking, Insurance, Investing, Investment Banking, Pooled Investment Fund, Other Banking and Financial Services, Commercial, Construction, REITS and Finance, Residential, Other Real Estate, Manufacturing, Restaurants, Retailing, Computers, Telecommunications, Other Technology, Other.",
+        "editor": "stringList",
+        "prefill": []
+      },
+      "exclude_industry_groups": {
+        "title": "Exclude industry groups",
+        "type": "array",
+        "description": "Drop these Form D industry groups. Default drops investment funds and real estate projects: Pooled Investment Fund, Commercial, Residential, REITS and Finance, Other Real Estate. Send an empty list to keep them.",
+        "editor": "stringList",
+        "default": [
+          "Pooled Investment Fund",
+          "Commercial",
+          "Residential",
+          "REITS and Finance",
+          "Other Real Estate"
+        ],
+        "prefill": [
+          "Pooled Investment Fund",
+          "Commercial",
+          "Residential",
+          "REITS and Finance",
+          "Other Real Estate"
+        ]
+      },
+      "exclude_spvs": {
+        "title": "Exclude funds and SPVs",
+        "type": "string",
+        "editor": "select",
+        "enum": [
+          "true",
+          "false"
+        ],
+        "enumTitles": [
+          "Yes",
+          "No"
+        ],
+        "description": "Drop special purpose vehicles and funds: filings that claim an investment company exemption (3(c)), sell pooled fund interests, or carry SPV, Fund, Feeder, or a Series of in the name.",
+        "default": "true"
+      },
+      "min_amount_usd": {
+        "title": "Minimum amount (USD)",
+        "type": "string",
+        "description": "Keep a round only when the larger of the amount offered and the amount sold is at least this much. 0 keeps every size.",
+        "default": "100000",
+        "prefill": "100000",
+        "editor": "textfield"
+      },
+      "name_keywords": {
+        "title": "Name keywords",
+        "type": "array",
+        "description": "Keep only companies whose filed name contains one of these words, such as AI, Bio, or Health.",
+        "editor": "stringList"
+      },
+      "include_amendments": {
+        "title": "Include amendments (Form D/A)",
+        "type": "string",
+        "editor": "select",
+        "enum": [
+          "true",
+          "false"
+        ],
+        "enumTitles": [
+          "Yes",
+          "No"
+        ],
+        "description": "Also return amended notices. Off by default, because an amendment updates an earlier round rather than reporting a new one.",
+        "default": "false"
+      },
+      "resolve_domains": {
+        "title": "Find the company domain",
+        "type": "string",
+        "editor": "select",
+        "enum": [
+          "true",
+          "false"
+        ],
+        "enumTitles": [
+          "Yes",
+          "No"
+        ],
+        "description": "Find each company's domain from its name and keep it only when the company's own homepage names the company. No extra charge.",
+        "default": "true"
+      },
+      "include_press": {
+        "title": "Add press confirmation",
+        "type": "string",
+        "editor": "select",
+        "enum": [
+          "true",
+          "false"
+        ],
+        "enumTitles": [
+          "Yes",
+          "No"
+        ],
+        "description": "Look up funding headlines for the 50 largest rounds in the run with the Mamba Labs News and Media Mention Monitor and add the round label and article. That actor charges its own article events (up to 100 articles a run) to your account; this actor charges nothing extra. Off by default.",
+        "default": "false"
+      },
+      "max_rounds": {
+        "title": "Max rounds",
+        "type": "string",
+        "description": "Round rows per run, newest filing first, up to 2000.",
+        "default": "100",
+        "prefill": "20",
+        "editor": "textfield"
+      },
+      "only_new": {
+        "title": "Only new results",
+        "type": "string",
+        "editor": "select",
+        "enum": [
+          "true",
+          "false"
+        ],
+        "enumTitles": [
+          "Yes",
+          "No"
+        ],
+        "description": "Skip rounds an earlier run with the same state key returned. Skipped rounds are free.",
+        "default": "false"
+      },
+      "state_key": {
+        "title": "State key",
+        "type": "string",
+        "description": "Names the list of rounds already returned. Use one key per schedule.",
+        "editor": "textfield"
+      },
+      "max_charge_usd": {
+        "title": "Max charge per run (USD)",
+        "type": "string",
+        "description": "Optional. Stop before a row would take this run past this amount.",
+        "editor": "textfield"
+      },
+      "source_tag": {
+        "title": "Source tag",
+        "type": "string",
+        "description": "Internal attribution tag for saved tasks. Leave empty.",
+        "editor": "hidden"
+      }
+    },
+    "required": []
+  }
+}

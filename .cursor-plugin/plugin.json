@@ -1,0 +1,33 @@
+{
+  "name": "mcp-recent-funding-rounds-feed",
+  "displayName": "Recent Funding Rounds Feed",
+  "version": "1.0.0",
+  "description": "MCP server for Recent Funding Rounds Feed. Find US companies that just raised private funding, from SEC Form D filings: company, domain, amount raised and offered, securities, investors count, executives and directors, address, and phone, filtered by date, state, industry, and size. Runs on Apify. Clay-ready output.",
+  "author": {
+    "name": "Mamba Labs",
+    "email": "labs@mambamindsetgrowth.com"
+  },
+  "homepage": "https://mambabuilt.com",
+  "repository": "https://github.com/mambalabsdev/mcp-recent-funding-rounds-feed",
+  "license": "MIT",
+  "category": "productivity",
+  "tags": [
+    "funding-rounds",
+    "recently-funded",
+    "form-d",
+    "apify",
+    "clay"
+  ],
+  "keywords": [
+    "mcp",
+    "funding-rounds",
+    "recently-funded",
+    "form-d",
+    "sec-edgar",
+    "startups",
+    "lead-generation",
+    "apify",
+    "clay"
+  ],
+  "mcpServers": ".mcp.json"
+}
