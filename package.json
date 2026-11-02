@@ -46,7 +46,7 @@
   },
   "mcpName": "com.mambabuilt/mcp-recent-funding-rounds-feed",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.32.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "zod": "^4.4.3"
   }
 }
